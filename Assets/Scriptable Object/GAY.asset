@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5759d6a660e3ac14dbd9a801bf9d7627, type: 3}
   m_Name: GAY
   m_EditorClassIdentifier: 
-  gravityStrength: -52.083336
-  gravityScale: 5.3092084
+  gravityStrength: -59.1716
+  gravityScale: 6.031763
   fallGravityMult: 2
   maxFallSpeed: 20
   fastFallGravityMult: 30
@@ -26,9 +26,9 @@ MonoBehaviour:
   accelInAir: 1
   deccelInAir: 0
   doConserveMomentum: 1
-  jumpHeight: 6
-  jumpTimeToApex: 0.48
-  jumpForce: 25
+  jumpHeight: 8
+  jumpTimeToApex: 0.52
+  jumpForce: 30.769232
   jumpCutGravityMult: 4
   jumpHangGravityMult: 0
   jumpHangTimeThreshold: 0
