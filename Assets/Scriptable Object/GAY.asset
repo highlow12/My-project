@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5759d6a660e3ac14dbd9a801bf9d7627, type: 3}
   m_Name: GAY
   m_EditorClassIdentifier: 
-  gravityStrength: -59.1716
-  gravityScale: 6.031763
-  fallGravityMult: 2
-  maxFallSpeed: 20
+  gravityStrength: -125
+  gravityScale: 12.7421
+  fallGravityMult: 1
+  maxFallSpeed: 23.5
   fastFallGravityMult: 30
-  maxFastFallSpeed: 30
+  maxFastFallSpeed: 40
   runMaxSpeed: 25
   runAcceleration: 2
   runAccelAmount: 4
@@ -26,28 +26,28 @@ MonoBehaviour:
   accelInAir: 1
   deccelInAir: 0
   doConserveMomentum: 1
-  jumpHeight: 8
-  jumpTimeToApex: 0.52
-  jumpForce: 30.769232
+  jumpHeight: 10
+  jumpTimeToApex: 0.4
+  jumpForce: 50
   jumpCutGravityMult: 4
   jumpHangGravityMult: 0
   jumpHangTimeThreshold: 0
   jumpHangAccelerationMult: 0
   jumpHangMaxSpeedMult: 0
-  wallJumpForce: {x: 20, y: 20}
-  wallJumpRunLerp: 0.75
-  wallJumpTime: 0.2
-  doTurnOnWallJump: 1
+  wallJumpForce: {x: 30, y: 42}
+  wallJumpRunLerp: 1
+  wallJumpTime: 0.054
+  doTurnOnWallJump: 0
   slideSpeed: -15
   slideAccel: 3
   coyoteTime: 0.2
   jumpInputBufferTime: 0.2
-  dashAmount: 10
-  dashSpeed: 25
+  dashAmount: 200
+  dashSpeed: 80
   dashSleepTime: 0.05
   dashAttackTime: 0.15
   dashEndTime: 0.15
   dashEndSpeed: {x: 15, y: 5}
   dashEndRunLerp: 0.5
   dashRefillTime: 0.1
-  dashInputBufferTime: 0.5
+  dashInputBufferTime: 0.112
