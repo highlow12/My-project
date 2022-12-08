@@ -92,6 +92,7 @@ public class PlayerMovement : MonoBehaviour
 
 	private void Update()
 	{
+		
         #region TIMERS
         LastOnGroundTime -= Time.deltaTime;
 		LastOnWallTime -= Time.deltaTime;
@@ -459,7 +460,7 @@ public class PlayerMovement : MonoBehaviour
 	{
 		//Overall this method of dashing aims to mimic Celeste, if you're looking for
 		// a more physics-based approach try a method similar to that used in the jump
-
+		
 		LastOnGroundTime = 0;
 		LastPressedDashTime = 0;
 
