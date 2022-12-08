@@ -471,6 +471,12 @@ public class PlayerMovement : MonoBehaviour
 
 		SetGravityScale(0);
 
+        //down dash isn't allowed
+        if (dir.y<0)
+        {
+			dir = new Vector2(dir.x, 0);
+        }
+
 		//We keep the player's velocity at the dash speed during the "attack" phase (in celeste the first 0.15s)
 		while (Time.time - startTime <= Data.dashAttackTime)
 		{
