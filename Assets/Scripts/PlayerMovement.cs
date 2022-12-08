@@ -483,6 +483,10 @@ public class PlayerMovement : MonoBehaviour
 			RB.velocity = dir.normalized * Data.dashSpeed;
 			//Pauses the loop until the next frame, creating something of a Update loop. 
 			//This is a cleaner implementation opposed to multiple timers and this coroutine approach is actually what is used in Celeste :D
+			if (_moveInput.y < 0)
+				break;
+
+            
 			yield return null;
 		}
 
@@ -559,11 +563,13 @@ public class PlayerMovement : MonoBehaviour
 	}
 
 	private bool CanDash()
-	{
-		if (!IsDashing && _dashesLeft < Data.dashAmount && LastOnGroundTime > 0 && !_dashRefilling)
-		{
-			StartCoroutine(nameof(RefillDash), 1);
-		}
+    {
+
+			if (!IsDashing && _dashesLeft < Data.dashAmount && LastOnGroundTime > 0 && !_dashRefilling)
+			{
+				StartCoroutine(nameof(RefillDash), 1);
+			}
+		
 
 		return _dashesLeft > 0;
 	}
