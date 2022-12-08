@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Super Meat Boy Style 1
   m_EditorClassIdentifier: 
   gravityStrength: -44.444447
-  gravityScale: 1.4814816
+  gravityScale: 4.5305243
   fallGravityMult: 2
   maxFallSpeed: 20
   fastFallGravityMult: 2
