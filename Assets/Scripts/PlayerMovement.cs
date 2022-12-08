@@ -266,7 +266,7 @@ public class PlayerMovement : MonoBehaviour
 				SetGravityScale(Data.gravityScale * Data.fallGravityMult);
 				//Caps maximum fall speed, so when falling over large distances we don't accelerate to insanely high speeds
 				RB.velocity = new Vector2(RB.velocity.x, Mathf.Max(RB.velocity.y, -Data.maxFallSpeed));
-			}
+            }
 			else
 			{
 				//Default gravity if standing on a platform or moving upwards
@@ -283,6 +283,7 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
 	{
+		Debug.Log(_moveInput);
 		//Handle Run
 		if (!IsDashing)
 		{
@@ -585,6 +586,13 @@ public class PlayerMovement : MonoBehaviour
     {
 		_moveInput.x = value.Get<Vector2>().x;
 		_moveInput.y = value.Get<Vector2>().y;
+
+        if (_moveInput.y<0)
+        {
+			RB.velocity = Vector2.zero;
+        }
+
+		
 	}
 }
 
