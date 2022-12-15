@@ -11,9 +11,10 @@ GameObject:
   - component: {fileID: 85742673833983711}
   - component: {fileID: 4982682553018840995}
   - component: {fileID: -7301361338698257480}
+  - component: {fileID: 6216682715448294204}
   m_Layer: 0
   m_Name: Startmap
-  m_TagString: Untagged
+  m_TagString: CornerMap
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -111,3 +112,15 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &6216682715448294204
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 190571562851764009}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99176118d69f34a4a9842577fc074b4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
