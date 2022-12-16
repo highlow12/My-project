@@ -138,10 +138,11 @@ public class mapCreate : MonoBehaviour
         var nowmap = Instantiate(StartMap, parent);
         nowmap.transform.position = Vector3.zero;
     }
-
-    public void Make_RnG_Map(GameObject Cornermap)
+    
+    public void Make_RnG_Map(GameObject Cornermap, int dir)
     {
-        
+        var direction = dir > 0 ? 1 : -1;
+
         if (Cornermap.CompareTag("StartMap") || Cornermap.CompareTag("CornerMap"))
         {
             
@@ -150,14 +151,15 @@ public class mapCreate : MonoBehaviour
             var nowmap = Runs[Random.Range(0, Runs.Length)];
 
             nowmap = Instantiate(nowmap, parent);
+            nowmap.name = "RnG" + mapcount;
 
             nowmap.SetActive(true);
             var nowmapscale = nowmap.transform.localScale;
 
             var Xtrs = nowmapscale.x / 2 - 0.5f + CornermapPosition.x;
-            var Ytrs = CornerScale.y / 2 + nowmapscale.y / 2 + CornermapPosition.y;
+            var Ytrs = (CornerScale.y / 2 + nowmapscale.y / 2) * direction + CornermapPosition.y;
 
-            nowmap.transform.position = new Vector3(Xtrs, Ytrs);
+            nowmap.transform.position = new Vector3(Xtrs, Ytrs );
 
             mapcount++;
         }
@@ -167,8 +169,6 @@ public class mapCreate : MonoBehaviour
     {
         if (mapcount < maxmaps)
         {
-
-
             if (RnGmap.CompareTag("RnGMap"))
             {
                 var RnGPosition = RnGmap.transform.position;
@@ -176,16 +176,78 @@ public class mapCreate : MonoBehaviour
                 var nowmap = Corners[Random.Range(0, Corners.Length)];
 
                 nowmap = Instantiate(nowmap, parent);
+                nowmap.name = "Corner" + mapcount;
 
                 var nowmapscale = nowmap.transform.localScale;
 
-                var Xtrs = nowmapscale.x / 2 - 0.5f + RnGscale.x;
+                var Xtrs = RnGscale.x / 2 + RnGPosition.x + nowmapscale.x / 2;
                 var Ytrs = RnGPosition.y;
 
                 nowmap.transform.position = new Vector3(Xtrs, Ytrs);
 
+                
             }
         }
     }
+
+    
+    public class makemapInfo
+    {
+        public GameObject obj;
+        public int dir;
+
+        public makemapInfo(GameObject OBJ, int direc )
+        {
+            obj = OBJ;
+            dir = direc;
+        }
+    }
+
+    Queue<makemapInfo> Q_RnGMap = new Queue<makemapInfo>();
+    Queue<makemapInfo> Q_CornerMap = new Queue<makemapInfo>();
+
+    public void EnQ_RnGMap(makemapInfo info)
+    {
+        Q_RnGMap.Enqueue(info);
+    }
+
+    public void EnQ_CornerMap(makemapInfo info)
+    {
+        Q_CornerMap.Enqueue(info);
+    }
+
+    private void Update()
+    {
+
+        if (Input.GetMouseButtonDown(0))
+        {
+
+
+            if (Q_RnGMap.Count > 0)
+            {
+                var info = Q_RnGMap.Dequeue();
+
+                Make_RnG_Map(info.obj, info.dir);
+
+            }
+            else
+            {
+                Debug.Log("Making RnG Maps is Done");
+            }
+
+
+            if (Q_CornerMap.Count > 0)
+            {
+                var info = Q_CornerMap.Dequeue();
+
+                Make_Corner_Map(info.obj);
+            }
+            else
+            {
+                Debug.Log("Making Corner Maps is Done");
+            }
+        }
+    }
+
 
 }
