@@ -139,7 +139,7 @@ public class mapCreate : MonoBehaviour
         nowmap.transform.position = Vector3.zero;
     }
     
-    public void Make_RnG_Map(GameObject Cornermap, int dir)
+     void Make_RnG_Map(GameObject Cornermap, int dir)
     {
         var direction = dir > 0 ? 1 : -1;
 
@@ -150,22 +150,26 @@ public class mapCreate : MonoBehaviour
             var CornerScale = Cornermap.transform.localScale;
             var nowmap = Runs[Random.Range(0, Runs.Length)];
 
-            nowmap = Instantiate(nowmap, parent);
-            nowmap.name = "RnG" + mapcount;
-
-            nowmap.SetActive(true);
             var nowmapscale = nowmap.transform.localScale;
 
             var Xtrs = nowmapscale.x / 2 - 0.5f + CornermapPosition.x;
             var Ytrs = (CornerScale.y / 2 + nowmapscale.y / 2) * direction + CornermapPosition.y;
 
-            nowmap.transform.position = new Vector3(Xtrs, Ytrs );
+            Collider2D hit = Physics2D.OverlapBox(new Vector3(Xtrs, Ytrs), nowmapscale- new Vector3(0.1f,0.1f), 0);
 
-            mapcount++;
+            if (hit == null)
+            {
+                nowmap = Instantiate(nowmap, new Vector3(Xtrs, Ytrs), Quaternion.EulerAngles(0, 0, 0), parent);
+                nowmap.name = "RnG" + mapcount;
+
+                nowmap.transform.position = new Vector3(Xtrs, Ytrs);
+
+                mapcount++;
+            }
         }
         
     }
-    public void Make_Corner_Map(GameObject RnGmap)
+     void Make_Corner_Map(GameObject RnGmap)
     {
         if (mapcount < maxmaps)
         {
@@ -219,8 +223,8 @@ public class mapCreate : MonoBehaviour
     private void Update()
     {
 
-        if (Input.GetMouseButtonDown(0))
-        {
+        //if (Input.GetMouseButtonDown(0))
+        //{
 
 
             if (Q_RnGMap.Count > 0)
@@ -246,7 +250,7 @@ public class mapCreate : MonoBehaviour
             {
                 Debug.Log("Making Corner Maps is Done");
             }
-        }
+        //}
     }
 
 
